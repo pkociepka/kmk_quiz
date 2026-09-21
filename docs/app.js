@@ -312,16 +312,12 @@ const SOLUTION_COLORS = ['#dc2626', '#0d9488', '#7c3aed', '#be185d', '#ca8a04'];
 
 function initMap() {
   map = L.map('map', { zoomControl: true });
-  // Stadia Maps — Alidade Smooth: clean minimalistic OSM style.
-  // Works from localhost without a key. For production (GitHub Pages) register
-  // a free account at https://stadiamaps.com and add ?api_key=YOUR_KEY to the URL.
+  // Esri World Light Gray Canvas — clean minimalistic style, no API key required.
   L.tileLayer(
-    'https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png',
+    'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
     {
-      attribution:
-        '© <a href="https://www.stadiamaps.com/">Stadia Maps</a> ' +
-        '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: 20,
+      attribution: 'Tiles &copy; Esri &mdash; Esri, DeLorme, NAVTEQ',
+      maxZoom: 16,
     }
   ).addTo(map);
   map.setView([50.061, 19.937], 12);
