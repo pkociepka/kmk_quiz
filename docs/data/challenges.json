@@ -1,0 +1,446 @@
+[
+  {
+    "id": "e01",
+    "from": "rondo_mogilskie",
+    "to": "rondo_czyzynskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e02",
+    "from": "rondo_czyzynskie",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e03",
+    "from": "dworzec_towarowy",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e04",
+    "from": "teatr_slowackiego",
+    "to": "rondo_czyzynskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e05",
+    "from": "rondo_czyzynskie",
+    "to": "teatr_slowackiego",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e06",
+    "from": "rondo_mogilskie",
+    "to": "dworzec_towarowy",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e07",
+    "from": "rondo_kocmyrzowskie_im_ks_gorzelanego",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e08",
+    "from": "rondo_mogilskie",
+    "to": "rondo_kocmyrzowskie_im_ks_gorzelanego",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e09",
+    "from": "stradom",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e10",
+    "from": "rondo_mogilskie",
+    "to": "stradom",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e11",
+    "from": "biezanowska",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e12",
+    "from": "kabel",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e13",
+    "from": "lipska",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e14",
+    "from": "rondo_mogilskie",
+    "to": "lipska",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e15",
+    "from": "rondo_mogilskie",
+    "to": "kabel",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e16",
+    "from": "rondo_mogilskie",
+    "to": "biezanowska",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e17",
+    "from": "rondo_mogilskie",
+    "to": "akf_pk",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e18",
+    "from": "rondo_mogilskie",
+    "to": "stella_sawickiego",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e19",
+    "from": "rondo_mogilskie",
+    "to": "czyzyny",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e20",
+    "from": "rondo_mogilskie",
+    "to": "plac_centralny_im_r_reagana",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e21",
+    "from": "plac_centralny_im_r_reagana",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e22",
+    "from": "czyzyny",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e23",
+    "from": "stella_sawickiego",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e24",
+    "from": "akf_pk",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e25",
+    "from": "dworzec_plaszow_estakada",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e26",
+    "from": "rondo_mogilskie",
+    "to": "dworzec_plaszow_estakada",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e27",
+    "from": "krowodrza_gorka_p_r",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e28",
+    "from": "bratyslawska",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e29",
+    "from": "szpital_narutowicza",
+    "to": "rondo_mogilskie",
+    "difficulty": "easy"
+  },
+  {
+    "id": "e30",
+    "from": "teatr_slowackiego",
+    "to": "tauron_arena_krakow_wieczysta",
+    "difficulty": "easy"
+  },
+  {
+    "id": "n01",
+    "from": "muzeum_lotnictwa_polskiego",
+    "to": "ofiar_dabia",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n02",
+    "from": "sw_wawrzynca",
+    "to": "kosciuszkowcow",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n03",
+    "from": "lipinskiego",
+    "to": "cmentarz_rakowicki",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n04",
+    "from": "galczynskiego",
+    "to": "brama_nr_4",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n05",
+    "from": "brama_nr_4",
+    "to": "rondo_308_dywizjonu",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n06",
+    "from": "bociana",
+    "to": "bienczycka",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n07",
+    "from": "ogrod_doswiadczen",
+    "to": "grodzki_urzad_pracy",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n08",
+    "from": "klasztorna",
+    "to": "kobierzynska",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n09",
+    "from": "uj_ast",
+    "to": "wlotowa",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n10",
+    "from": "nowy_prokocim",
+    "to": "gornickiego",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n11",
+    "from": "struga",
+    "to": "muzeum_fotografii",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n12",
+    "from": "stradom",
+    "to": "klimeckiego",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n13",
+    "from": "grota_roweckiego",
+    "to": "nowy_biezanow_p_r",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n14",
+    "from": "os_piastow",
+    "to": "podgorze_ska",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n15",
+    "from": "orzeszkowej",
+    "to": "sw_wawrzynca",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n16",
+    "from": "maly_plaszow_p_r",
+    "to": "kapelanka",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n17",
+    "from": "rondo_grunwaldzkie",
+    "to": "zablocie",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n18",
+    "from": "pachonskiego_p_r",
+    "to": "os_zlotego_wieku",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n19",
+    "from": "kuznicy_kollatajowskiej",
+    "to": "brozka",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n20",
+    "from": "muzeum_fotografii",
+    "to": "szpital_narutowicza",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n21",
+    "from": "sw_wawrzynca",
+    "to": "giedroycia",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n22",
+    "from": "kopiec_wandy",
+    "to": "korona",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n23",
+    "from": "filharmonia",
+    "to": "pedzichow",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n24",
+    "from": "ofiar_dabia",
+    "to": "dworzec_glowny_tunel",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n25",
+    "from": "suche_stawy",
+    "to": "kosciuszkowcow",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n26",
+    "from": "fort_mogila",
+    "to": "dworzec_glowny_zachod",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n27",
+    "from": "os_kolorowe",
+    "to": "park_jordana",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n28",
+    "from": "kleeberga",
+    "to": "kuklinskiego",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n29",
+    "from": "cwiklinskiej",
+    "to": "misnienska",
+    "difficulty": "normal"
+  },
+  {
+    "id": "n30",
+    "from": "muzeum_fotografii",
+    "to": "muzeum_lotnictwa_polskiego",
+    "difficulty": "normal"
+  },
+  {
+    "id": "h01",
+    "from": "maly_plaszow_p_r",
+    "to": "os_zgody",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h02",
+    "from": "os_zgody",
+    "to": "rzebika",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h03",
+    "from": "dworzec_glowny_zachod",
+    "to": "os_zgody",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h04",
+    "from": "muzeum_fotografii",
+    "to": "os_zgody",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h05",
+    "from": "os_zgody",
+    "to": "dworzec_glowny_zachod",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h06",
+    "from": "rzebika",
+    "to": "os_zgody",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h07",
+    "from": "os_zgody",
+    "to": "cmentarz_rakowicki",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h08",
+    "from": "cmentarz_rakowicki",
+    "to": "os_zgody",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h09",
+    "from": "limanowskiego",
+    "to": "os_zgody",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h10",
+    "from": "os_zgody",
+    "to": "limanowskiego",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h11",
+    "from": "os_zgody",
+    "to": "uniwersytet_ekonomiczny",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h12",
+    "from": "uniwersytet_ekonomiczny",
+    "to": "os_zgody",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h13",
+    "from": "os_zgody",
+    "to": "maly_plaszow_p_r",
+    "difficulty": "hard"
+  },
+  {
+    "id": "h14",
+    "from": "os_zgody",
+    "to": "muzeum_fotografii",
+    "difficulty": "hard"
+  }
+]

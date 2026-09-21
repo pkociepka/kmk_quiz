@@ -1,0 +1,782 @@
+{
+  "grodzki_urzad_pracy": {
+    "name": "Grodzki Urząd Pracy",
+    "lat": 50.08735,
+    "lon": 20.05965
+  },
+  "kosciuszkowcow": {
+    "name": "Kościuszkowców",
+    "lat": 50.016156,
+    "lon": 19.929586
+  },
+  "solvay": {
+    "name": "Solvay",
+    "lat": 50.014576,
+    "lon": 19.927837
+  },
+  "nullo": {
+    "name": "Nullo",
+    "lat": 50.060087,
+    "lon": 19.967087
+  },
+  "galczynskiego": {
+    "name": "Gałczyńskiego",
+    "lat": 50.069309,
+    "lon": 20.012467
+  },
+  "akf_pk": {
+    "name": "AKF / PK",
+    "lat": 50.073991,
+    "lon": 19.998748
+  },
+  "zalew_nowohucki": {
+    "name": "Zalew Nowohucki",
+    "lat": 50.076195,
+    "lon": 20.052464
+  },
+  "mistrzejowice": {
+    "name": "Mistrzejowice",
+    "lat": 50.09486,
+    "lon": 19.995525
+  },
+  "kampus_up_jp_ii": {
+    "name": "Kampus UP JP II",
+    "lat": 50.020601,
+    "lon": 19.897813
+  },
+  "plac_centralny_im_r_reagana": {
+    "name": "Plac Centralny im. R. Reagana",
+    "lat": 50.072126,
+    "lon": 20.037325
+  },
+  "rondo_kocmyrzowskie_im_ks_gorzelanego": {
+    "name": "Rondo Kocmyrzowskie im. ks. Gorzelanego",
+    "lat": 50.079606,
+    "lon": 20.027379
+  },
+  "bratyslawska": {
+    "name": "Bratysławska",
+    "lat": 50.084187,
+    "lon": 19.933871
+  },
+  "dworzec_towarowy": {
+    "name": "Dworzec Towarowy",
+    "lat": 50.075634,
+    "lon": 19.940117
+  },
+  "nowy_kleparz": {
+    "name": "Nowy Kleparz",
+    "lat": 50.073499,
+    "lon": 19.936541
+  },
+  "pedzichow": {
+    "name": "Pędzichów",
+    "lat": 50.069662,
+    "lon": 19.937517
+  },
+  "politechnika": {
+    "name": "Politechnika",
+    "lat": 50.071087,
+    "lon": 19.945052
+  },
+  "cichy_kacik": {
+    "name": "Cichy Kącik",
+    "lat": 50.062955,
+    "lon": 19.903385
+  },
+  "stella_sawickiego": {
+    "name": "Stella-Sawickiego",
+    "lat": 50.074287,
+    "lon": 20.004669
+  },
+  "cmentarz_rakowicki": {
+    "name": "Cmentarz Rakowicki",
+    "lat": 50.073605,
+    "lon": 19.956714
+  },
+  "rondo_mogilskie": {
+    "name": "Rondo Mogilskie",
+    "lat": 50.065476,
+    "lon": 19.959377
+  },
+  "lubicz": {
+    "name": "Lubicz",
+    "lat": 50.065223,
+    "lon": 19.951606
+  },
+  "uniwersytet_ekonomiczny": {
+    "name": "Uniwersytet Ekonomiczny",
+    "lat": 50.067968,
+    "lon": 19.952437
+  },
+  "cystersow": {
+    "name": "Cystersów",
+    "lat": 50.066531,
+    "lon": 19.969834
+  },
+  "bialucha": {
+    "name": "Białucha",
+    "lat": 50.067719,
+    "lon": 19.977591
+  },
+  "salwator": {
+    "name": "Salwator",
+    "lat": 50.052687,
+    "lon": 19.915391
+  },
+  "komorowskiego": {
+    "name": "Komorowskiego",
+    "lat": 50.053418,
+    "lon": 19.921883
+  },
+  "jubilat": {
+    "name": "Jubilat",
+    "lat": 50.055249,
+    "lon": 19.92758
+  },
+  "reymana": {
+    "name": "Reymana",
+    "lat": 50.06136,
+    "lon": 19.910942
+  },
+  "filharmonia": {
+    "name": "Filharmonia",
+    "lat": 50.058955,
+    "lon": 19.933324
+  },
+  "wawel": {
+    "name": "Wawel",
+    "lat": 50.054417,
+    "lon": 19.939517
+  },
+  "poczta_glowna": {
+    "name": "Poczta Główna",
+    "lat": 50.059447,
+    "lon": 19.942265
+  },
+  "starowislna": {
+    "name": "Starowiślna",
+    "lat": 50.0571,
+    "lon": 19.944789
+  },
+  "stradom": {
+    "name": "Stradom",
+    "lat": 50.051666,
+    "lon": 19.941745
+  },
+  "plac_wolnica": {
+    "name": "Plac Wolnica",
+    "lat": 50.048071,
+    "lon": 19.943437
+  },
+  "orzeszkowej": {
+    "name": "Orzeszkowej",
+    "lat": 50.050589,
+    "lon": 19.938461
+  },
+  "miodowa": {
+    "name": "Miodowa",
+    "lat": 50.053548,
+    "lon": 19.948504
+  },
+  "rondo_grzegorzeckie": {
+    "name": "Rondo Grzegórzeckie",
+    "lat": 50.057736,
+    "lon": 19.959494
+  },
+  "fabryczna": {
+    "name": "Fabryczna",
+    "lat": 50.060344,
+    "lon": 19.970722
+  },
+  "ofiar_dabia": {
+    "name": "Ofiar Dąbia",
+    "lat": 50.05961,
+    "lon": 19.976317
+  },
+  "dabie": {
+    "name": "Dąbie",
+    "lat": 50.060716,
+    "lon": 19.979098
+  },
+  "os_zlotego_wieku": {
+    "name": "Os. Złotego Wieku",
+    "lat": 50.093708,
+    "lon": 20.004405
+  },
+  "os_piastow": {
+    "name": "Os. Piastów",
+    "lat": 50.101977,
+    "lon": 20.012058
+  },
+  "piasta_kolodzieja": {
+    "name": "Piasta Kołodzieja",
+    "lat": 50.098194,
+    "lon": 20.013034
+  },
+  "kleeberga": {
+    "name": "Kleeberga",
+    "lat": 50.095776,
+    "lon": 20.012676
+  },
+  "rondo_piastowskie": {
+    "name": "Rondo Piastowskie",
+    "lat": 50.094364,
+    "lon": 20.011261
+  },
+  "dunikowskiego": {
+    "name": "Dunikowskiego",
+    "lat": 50.09236,
+    "lon": 20.015765
+  },
+  "dh_wanda": {
+    "name": "DH Wanda",
+    "lat": 50.084454,
+    "lon": 20.02068
+  },
+  "czyzyny": {
+    "name": "Czyżyny",
+    "lat": 50.074014,
+    "lon": 20.011366
+  },
+  "rondo_czyzynskie": {
+    "name": "Rondo Czyżyńskie",
+    "lat": 50.073458,
+    "lon": 20.017509
+  },
+  "os_kolorowe": {
+    "name": "Os. Kolorowe",
+    "lat": 50.072284,
+    "lon": 20.029159
+  },
+  "os_zgody": {
+    "name": "Os. Zgody",
+    "lat": 50.076689,
+    "lon": 20.031182
+  },
+  "teatr_ludowy": {
+    "name": "Teatr Ludowy",
+    "lat": 50.082064,
+    "lon": 20.032371
+  },
+  "struga": {
+    "name": "Struga",
+    "lat": 50.07472,
+    "lon": 20.046887
+  },
+  "os_na_skarpie": {
+    "name": "Os. Na Skarpie",
+    "lat": 50.069759,
+    "lon": 20.045842
+  },
+  "klasztorna": {
+    "name": "Klasztorna",
+    "lat": 50.068542,
+    "lon": 20.052587
+  },
+  "darwina": {
+    "name": "Darwina",
+    "lat": 50.089526,
+    "lon": 20.059047
+  },
+  "wzgorza_krzeslawickie": {
+    "name": "Wzgórza Krzesławickie",
+    "lat": 50.094595,
+    "lon": 20.064858
+  },
+  "bardosa": {
+    "name": "Bardosa",
+    "lat": 50.067757,
+    "lon": 20.06493
+  },
+  "kopiec_wandy": {
+    "name": "Kopiec Wandy",
+    "lat": 50.069833,
+    "lon": 20.066865
+  },
+  "brama_nr_4": {
+    "name": "Brama nr 4",
+    "lat": 50.064927,
+    "lon": 20.074984
+  },
+  "brama_nr_5": {
+    "name": "Brama nr 5",
+    "lat": 50.069124,
+    "lon": 20.091682
+  },
+  "meksyk": {
+    "name": "Meksyk",
+    "lat": 50.069854,
+    "lon": 20.094966
+  },
+  "koksochemia": {
+    "name": "Koksochemia",
+    "lat": 50.071926,
+    "lon": 20.104577
+  },
+  "pleszow": {
+    "name": "Pleszów",
+    "lat": 50.072893,
+    "lon": 20.11689
+  },
+  "kombinat": {
+    "name": "Kombinat",
+    "lat": 50.079223,
+    "lon": 20.065642
+  },
+  "elektromontaz": {
+    "name": "Elektromontaż",
+    "lat": 50.087705,
+    "lon": 20.064344
+  },
+  "zajezdnia_nowa_huta": {
+    "name": "Zajezdnia Nowa Huta",
+    "lat": 50.083559,
+    "lon": 20.065577
+  },
+  "ph": {
+    "name": "PH",
+    "lat": 50.084174,
+    "lon": 20.064555
+  },
+  "gromadzka": {
+    "name": "Gromadzka",
+    "lat": 50.040636,
+    "lon": 19.978133
+  },
+  "lipska": {
+    "name": "Lipska",
+    "lat": 50.040339,
+    "lon": 19.98303
+  },
+  "kuklinskiego": {
+    "name": "Kuklińskiego",
+    "lat": 50.044552,
+    "lon": 19.973575
+  },
+  "plac_bohaterow_getta": {
+    "name": "Plac Bohaterów Getta",
+    "lat": 50.046661,
+    "lon": 19.955064
+  },
+  "korona": {
+    "name": "Korona",
+    "lat": 50.043896,
+    "lon": 19.946987
+  },
+  "smolki": {
+    "name": "Smolki",
+    "lat": 50.041562,
+    "lon": 19.943191
+  },
+  "szwedzka": {
+    "name": "Szwedzka",
+    "lat": 50.046732,
+    "lon": 19.925391
+  },
+  "kapelanka": {
+    "name": "Kapelanka",
+    "lat": 50.044981,
+    "lon": 19.922054
+  },
+  "slomiana": {
+    "name": "Słomiana",
+    "lat": 50.041114,
+    "lon": 19.924323
+  },
+  "kobierzynska": {
+    "name": "Kobierzyńska",
+    "lat": 50.034516,
+    "lon": 19.925959
+  },
+  "ruczaj": {
+    "name": "Ruczaj",
+    "lat": 50.027111,
+    "lon": 19.905653
+  },
+  "rondo_matecznego": {
+    "name": "Rondo Matecznego",
+    "lat": 50.036443,
+    "lon": 19.940579
+  },
+  "rzemieslnicza": {
+    "name": "Rzemieślnicza",
+    "lat": 50.033297,
+    "lon": 19.938543
+  },
+  "borsucza": {
+    "name": "Borsucza",
+    "lat": 50.030527,
+    "lon": 19.928819
+  },
+  "brozka": {
+    "name": "Brożka",
+    "lat": 50.030512,
+    "lon": 19.931802
+  },
+  "pt": {
+    "name": "PT",
+    "lat": 50.031724,
+    "lon": 19.934092
+  },
+  "dworcowa": {
+    "name": "Dworcowa",
+    "lat": 50.033054,
+    "lon": 19.970686
+  },
+  "kabel": {
+    "name": "Kabel",
+    "lat": 50.026925,
+    "lon": 19.976899
+  },
+  "biezanowska": {
+    "name": "Bieżanowska",
+    "lat": 50.023329,
+    "lon": 19.980543
+  },
+  "dauna": {
+    "name": "Dauna",
+    "lat": 50.018349,
+    "lon": 19.97755
+  },
+  "wlotowa": {
+    "name": "Wlotowa",
+    "lat": 50.019458,
+    "lon": 19.987982
+  },
+  "prokocim": {
+    "name": "Prokocim",
+    "lat": 50.017586,
+    "lon": 19.991047
+  },
+  "cwiklinskiej": {
+    "name": "Ćwiklińskiej",
+    "lat": 50.016012,
+    "lon": 20.019642
+  },
+  "teligi": {
+    "name": "Teligi",
+    "lat": 50.016555,
+    "lon": 20.007538
+  },
+  "prokocim_szpital": {
+    "name": "Prokocim Szpital",
+    "lat": 50.014514,
+    "lon": 19.999561
+  },
+  "nowosadecka": {
+    "name": "Nowosądecka",
+    "lat": 50.013446,
+    "lon": 19.964659
+  },
+  "piaski_nowe": {
+    "name": "Piaski Nowe",
+    "lat": 50.015465,
+    "lon": 19.971589
+  },
+  "witosa": {
+    "name": "Witosa",
+    "lat": 50.012381,
+    "lon": 19.956323
+  },
+  "borek_falecki": {
+    "name": "Borek Fałęcki",
+    "lat": 50.013101,
+    "lon": 19.927021
+  },
+  "oleandry": {
+    "name": "Oleandry",
+    "lat": 50.059818,
+    "lon": 19.920862
+  },
+  "bienczycka": {
+    "name": "Bieńczycka",
+    "lat": 50.07568,
+    "lon": 20.02051
+  },
+  "lagiewniki": {
+    "name": "Łagiewniki",
+    "lat": 50.030036,
+    "lon": 19.936354
+  },
+  "klimeckiego": {
+    "name": "Klimeckiego",
+    "lat": 50.048996,
+    "lon": 19.967597
+  },
+  "park_jordana": {
+    "name": "Park Jordana",
+    "lat": 50.060257,
+    "lon": 19.917952
+  },
+  "fort_mogila": {
+    "name": "Fort Mogiła",
+    "lat": 50.066527,
+    "lon": 20.07106
+  },
+  "zablocie": {
+    "name": "Zabłocie",
+    "lat": 50.049825,
+    "lon": 19.964682
+  },
+  "dworzec_glowny_tunel": {
+    "name": "Dworzec Główny Tunel",
+    "lat": 50.068229,
+    "lon": 19.947645
+  },
+  "rzebika": {
+    "name": "Rzebika",
+    "lat": 50.040487,
+    "lon": 19.991758
+  },
+  "plac_wszystkich_swietych": {
+    "name": "Plac Wszystkich Świętych",
+    "lat": 50.059117,
+    "lon": 19.937869
+  },
+  "misnienska": {
+    "name": "Miśnieńska",
+    "lat": 50.094448,
+    "lon": 20.000076
+  },
+  "rondo_hipokratesa": {
+    "name": "Rondo Hipokratesa",
+    "lat": 50.090059,
+    "lon": 20.021375
+  },
+  "wankowicza": {
+    "name": "Wańkowicza",
+    "lat": 50.086957,
+    "lon": 20.047584
+  },
+  "suche_stawy": {
+    "name": "Suche Stawy",
+    "lat": 50.067491,
+    "lon": 20.059864
+  },
+  "nowy_prokocim": {
+    "name": "Nowy Prokocim",
+    "lat": 50.016223,
+    "lon": 20.012662
+  },
+  "dworzec_glowny_zachod": {
+    "name": "Dworzec Główny Zachód",
+    "lat": 50.067829,
+    "lon": 19.945381
+  },
+  "limanowskiego": {
+    "name": "Limanowskiego",
+    "lat": 50.045068,
+    "lon": 19.955396
+  },
+  "cmentarz_podgorski": {
+    "name": "Cmentarz Podgórski",
+    "lat": 50.038837,
+    "lon": 19.964734
+  },
+  "jarzebiny": {
+    "name": "Jarzębiny",
+    "lat": 50.092141,
+    "lon": 20.061354
+  },
+  "lipinskiego": {
+    "name": "Lipińskiego",
+    "lat": 50.030765,
+    "lon": 19.924839
+  },
+  "grota_roweckiego": {
+    "name": "Grota-Roweckiego",
+    "lat": 50.03173,
+    "lon": 19.920687
+  },
+  "norymberska": {
+    "name": "Norymberska",
+    "lat": 50.029969,
+    "lon": 19.912678
+  },
+  "kampus_uj": {
+    "name": "Kampus UJ",
+    "lat": 50.024365,
+    "lon": 19.90174
+  },
+  "lagiewniki_zus": {
+    "name": "Łagiewniki ZUS",
+    "lat": 50.024577,
+    "lon": 19.933922
+  },
+  "teatr_variete": {
+    "name": "Teatr Variete",
+    "lat": 50.058842,
+    "lon": 19.962452
+  },
+  "dworzec_plaszow_estakada": {
+    "name": "Dworzec Płaszów Estakada",
+    "lat": 50.033512,
+    "lon": 19.977071
+  },
+  "tauron_arena_krakow_al_pokoju": {
+    "name": "TAURON Arena Kraków Al. Pokoju",
+    "lat": 50.064302,
+    "lon": 19.989528
+  },
+  "stary_kleparz": {
+    "name": "Stary Kleparz",
+    "lat": 50.066487,
+    "lon": 19.939335
+  },
+  "szpital_narutowicza": {
+    "name": "Szpital Narutowicza",
+    "lat": 50.080709,
+    "lon": 19.937802
+  },
+  "cienista": {
+    "name": "Cienista",
+    "lat": 50.085155,
+    "lon": 20.03812
+  },
+  "czerwone_maki_p_r": {
+    "name": "Czerwone Maki P+R",
+    "lat": 50.017986,
+    "lon": 19.889106
+  },
+  "tauron_arena_krakow_wieczysta": {
+    "name": "TAURON Arena Kraków Wieczysta",
+    "lat": 50.071665,
+    "lon": 19.98396
+  },
+  "rondo_308_dywizjonu": {
+    "name": "Rondo 308. Dywizjonu",
+    "lat": 50.067375,
+    "lon": 20.005377
+  },
+  "muzeum_narodowe": {
+    "name": "Muzeum Narodowe",
+    "lat": 50.059426,
+    "lon": 19.925022
+  },
+  "podgorze_ska": {
+    "name": "Podgórze SKA",
+    "lat": 50.042139,
+    "lon": 19.961074
+  },
+  "nowy_biezanow_p_r": {
+    "name": "Nowy Bieżanów P+R",
+    "lat": 50.015608,
+    "lon": 20.023053
+  },
+  "kurdwanow_p_r": {
+    "name": "Kurdwanów P+R",
+    "lat": 50.013827,
+    "lon": 19.949195
+  },
+  "teatr_slowackiego": {
+    "name": "Teatr Słowackiego",
+    "lat": 50.06465,
+    "lon": 19.945052
+  },
+  "maly_plaszow_p_r": {
+    "name": "Mały Płaszów P+R",
+    "lat": 50.040064,
+    "lon": 20.001498
+  },
+  "rondo_grunwaldzkie": {
+    "name": "Rondo Grunwaldzkie",
+    "lat": 50.048586,
+    "lon": 19.931036
+  },
+  "giedroycia": {
+    "name": "Giedroycia",
+    "lat": 50.064675,
+    "lon": 20.08463
+  },
+  "sw_gertrudy": {
+    "name": "św. Gertrudy",
+    "lat": 50.058557,
+    "lon": 19.940913
+  },
+  "sw_wawrzynca": {
+    "name": "św. Wawrzyńca",
+    "lat": 50.051273,
+    "lon": 19.950947
+  },
+  "muzeum_fotografii": {
+    "name": "Muzeum Fotografii",
+    "lat": 50.070734,
+    "lon": 19.954436
+  },
+  "lagiewniki_ska": {
+    "name": "Łagiewniki SKA",
+    "lat": 50.021408,
+    "lon": 19.93243
+  },
+  "sanktuarium_bozego_milosierdzia": {
+    "name": "Sanktuarium Bożego Miłosierdzia",
+    "lat": 50.01778,
+    "lon": 19.936295
+  },
+  "turowicza": {
+    "name": "Turowicza",
+    "lat": 50.015085,
+    "lon": 19.94437
+  },
+  "krowodrza_gorka_p_r": {
+    "name": "Krowodrza Górka P+R",
+    "lat": 50.089033,
+    "lon": 19.932395
+  },
+  "uj_ast": {
+    "name": "UJ / AST",
+    "lat": 50.060317,
+    "lon": 19.931126
+  },
+  "siewna_wiadukt": {
+    "name": "Siewna Wiadukt",
+    "lat": 50.09591,
+    "lon": 19.947835
+  },
+  "bialopradnicka": {
+    "name": "Białoprądnicka",
+    "lat": 50.09492,
+    "lon": 19.93503
+  },
+  "gornickiego": {
+    "name": "Górnickiego",
+    "lat": 50.096075,
+    "lon": 19.94172
+  },
+  "pachonskiego_p_r": {
+    "name": "Pachońskiego P+R",
+    "lat": 50.093975,
+    "lon": 19.92994
+  },
+  "kuznicy_kollatajowskiej": {
+    "name": "Kuźnicy Kołłątajowskiej",
+    "lat": 50.097835,
+    "lon": 19.956065
+  },
+  "bociana": {
+    "name": "Bociana",
+    "lat": 50.095095,
+    "lon": 19.9542
+  },
+  "papierni_pradnickich": {
+    "name": "Papierni Prądnickich",
+    "lat": 50.101765,
+    "lon": 19.957365
+  },
+  "muzeum_lotnictwa_polskiego": {
+    "name": "Muzeum Lotnictwa Polskiego",
+    "lat": 50.073529,
+    "lon": 19.990363
+  },
+  "gorka_narodowa_p_r": {
+    "name": "Górka Narodowa P+R",
+    "lat": 50.104864,
+    "lon": 19.96247
+  },
+  "ogrod_doswiadczen": {
+    "name": "Ogród Doświadczeń",
+    "lat": 50.06558,
+    "lon": 19.996906
+  }
+}

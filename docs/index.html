@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Krakowski Szybki Tramwaj</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1 id="app-title">Krakowski Szybki Tramwaj</h1>
+    <div class="diff-group">
+      <button class="diff-btn" data-diff="easy">Łatwy</button>
+      <button class="diff-btn" data-diff="normal">Średni</button>
+      <button class="diff-btn" data-diff="hard">Trudny</button>
+    </div>
+    <button id="lang-btn" class="lang-btn">🇬🇧 EN</button>
+  </header>
+
+  <div class="layout">
+
+    <aside class="panel">
+
+      <p id="loading" class="muted">Loading data…</p>
+
+      <section id="quiz" class="hidden">
+        <div class="challenge-card">
+          <div class="stop-row">
+            <span class="stop-dot from-dot"></span>
+            <div>
+              <div class="stop-label" id="label-from">Skąd</div>
+              <div class="stop-name" id="from-name"></div>
+            </div>
+          </div>
+          <div class="stop-connector"></div>
+          <div class="stop-row">
+            <span class="stop-dot to-dot"></span>
+            <div>
+              <div class="stop-label" id="label-to">Dokąd</div>
+              <div class="stop-name" id="to-name"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-label" id="label-route">Twoja trasa</div>
+        <div id="route-display" class="route-display">
+          <span class="route-hint">wybierz linię poniżej</span>
+        </div>
+
+        <div class="section-label" id="label-lines">Linie</div>
+        <div id="line-grid" class="line-grid"></div>
+
+        <button id="submit-btn" class="btn-primary" disabled>Sprawdź</button>
+
+        <div id="result-panel" class="result-panel hidden">
+          <div class="result-row">
+            <span id="result-icon" class="result-icon"></span>
+            <span id="result-text" class="result-text"></span>
+          </div>
+          <div id="result-optimal" class="result-optimal"></div>
+          <button id="next-btn" class="btn-primary">Następne →</button>
+        </div>
+      </section>
+
+      <section id="all-done" class="hidden all-done">
+        <div class="done-emoji">🎉</div>
+        <p id="done-text"></p>
+        <button id="reset-btn" class="btn-secondary">Resetuj poziom</button>
+      </section>
+
+    </aside>
+
+    <div id="map"></div>
+
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
