@@ -10,6 +10,7 @@ const state = {
 
   difficulty: localStorage.getItem('kmq_diff') ?? 'easy',
   lang:       localStorage.getItem('kmq_lang') ?? 'pl',
+  showPaths:  localStorage.getItem('kmq_show_paths') !== 'false',
   solved:     new Set(JSON.parse(localStorage.getItem('kmq_solved') ?? '[]')),
 
   challenge:  null,
@@ -48,6 +49,9 @@ const LANG = {
     submit:      'Sprawdź',
     nextBtn:     'Następne →',
     resetDiff:   'Resetuj poziom',
+    settingsDiff:  'Poziom trudności',
+    settingsLang:  'Język',
+    settingsPaths: 'Podgląd linii na mapie',
     routeHint:   'wybierz linię poniżej',
     allDone:     (diff) => {
       const d = { easy: 'łatwe', normal: 'średnie', hard: 'trudne' }[diff] ?? diff;
@@ -79,6 +83,9 @@ const LANG = {
     submit:      'Submit',
     nextBtn:     'Next challenge →',
     resetDiff:   'Reset this difficulty',
+    settingsDiff:  'Difficulty',
+    settingsLang:  'Language',
+    settingsPaths: 'Show lines on map',
     routeHint:   'tap a line below to start',
     allDone:     (diff) => `All ${diff} challenges solved!`,
     correct:     (n) => `Correct! ${n} line${n !== 1 ? 's' : ''} needed.`,
@@ -575,10 +582,13 @@ function handleSubmit() {
     optEl.textContent = optNames ? L.optimal(optNames) : '';
   }
 
-  // Only show optimal path when the user's answer was wrong.
-  // For correct answers the map already shows their route — leave it.
   const isCorrect = validation.ok && userLines.length === optimal;
-  if (optSegs && !isCorrect) drawOptimalSegments(optSegs);
+  if (isCorrect) {
+    // Always show the user's route after a correct answer, regardless of showPaths setting.
+    updateMapLines(userLines);
+  } else if (optSegs) {
+    drawOptimalSegments(optSegs);
+  }
 }
 
 function setResultUI(icon, cls, text) {
@@ -592,19 +602,24 @@ function setResultUI(icon, cls, text) {
 
 function applyTranslations() {
   const L = LANG[state.lang];
-  $('app-title').textContent  = L.appTitle;
-  $('lang-btn').textContent   = state.lang === 'pl' ? '🇬🇧 EN' : '🇵🇱 PL';
-  $('label-from').textContent = L.labelFrom;
-  $('label-to').textContent   = L.labelTo;
-  $('label-route').textContent = L.labelRoute;
-  $('label-lines').textContent = L.labelLines;
-  $('submit-btn').textContent = L.submit;
-  $('next-btn').textContent   = L.nextBtn;
-  $('reset-btn').textContent  = L.resetDiff;
-  $('loading').textContent    = L.loading;
+  $('app-title').textContent       = L.appTitle;
+  $('label-from').textContent      = L.labelFrom;
+  $('label-to').textContent        = L.labelTo;
+  $('label-route').textContent     = L.labelRoute;
+  $('label-lines').textContent     = L.labelLines;
+  $('submit-btn').textContent      = L.submit;
+  $('next-btn').textContent        = L.nextBtn;
+  $('reset-btn').textContent       = L.resetDiff;
+  $('loading').textContent         = L.loading;
+  $('label-diff-setting').textContent  = L.settingsDiff;
+  $('label-lang-setting').textContent  = L.settingsLang;
+  $('label-paths-setting').textContent = L.settingsPaths;
+  $('show-paths-toggle').checked = state.showPaths;
+  document.querySelectorAll('.lang-option-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === state.lang);
+  });
   renderDiffButtons();
   renderRouteDisplay();
-  // Update all-done text if that section is currently visible
   if (!$('all-done').classList.contains('hidden'))
     $('done-text').textContent = L.allDone(state.difficulty);
 }
@@ -612,15 +627,48 @@ function applyTranslations() {
 // ── Event wiring ──────────────────────────────────────────────────────────────
 
 function wireEvents() {
-  // Difficulty selector
+  // Settings panel toggle
+  const settingsPanel = $('settings-panel');
+  const settingsBtn   = $('settings-btn');
+
+  function openSettings()  { settingsPanel.classList.remove('hidden'); settingsBtn.classList.add('open'); }
+  function closeSettings() { settingsPanel.classList.add('hidden');    settingsBtn.classList.remove('open'); }
+
+  settingsBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    settingsPanel.classList.contains('hidden') ? openSettings() : closeSettings();
+  });
+  settingsPanel.addEventListener('click', e => e.stopPropagation());
+  document.addEventListener('click', closeSettings);
+
+  // Difficulty selector (inside settings panel)
   document.querySelectorAll('.diff-btn').forEach(btn =>
     btn.addEventListener('click', () => {
       state.difficulty = btn.dataset.diff;
       localStorage.setItem('kmq_diff', state.difficulty);
       renderDiffButtons();
+      closeSettings();
       pickChallenge();
     })
   );
+
+  // Language selector (inside settings panel)
+  document.querySelectorAll('.lang-option-btn').forEach(btn =>
+    btn.addEventListener('click', () => {
+      state.lang = btn.dataset.lang;
+      localStorage.setItem('kmq_lang', state.lang);
+      applyTranslations();
+    })
+  );
+
+  // Show-paths toggle
+  $('show-paths-toggle').addEventListener('change', e => {
+    state.showPaths = e.target.checked;
+    localStorage.setItem('kmq_show_paths', state.showPaths);
+    // Apply immediately: show or hide current user lines
+    if (!state.submitted)
+      updateMapLines(state.showPaths ? state.userLines : []);
+  });
 
   // Line grid (delegated)
   $('line-grid').addEventListener('click', e => {
@@ -630,7 +678,7 @@ function wireEvents() {
     renderRouteDisplay();
     renderLineGrid();
     renderSubmitBtn();
-    updateMapLines(state.userLines);
+    if (state.showPaths) updateMapLines(state.userLines);
   });
 
   // Route chips: click truncates at that position (removes it and everything after)
@@ -641,13 +689,7 @@ function wireEvents() {
     renderRouteDisplay();
     renderLineGrid();
     renderSubmitBtn();
-    updateMapLines(state.userLines);
-  });
-
-  $('lang-btn').addEventListener('click', () => {
-    state.lang = state.lang === 'pl' ? 'en' : 'pl';
-    localStorage.setItem('kmq_lang', state.lang);
-    applyTranslations();
+    if (state.showPaths) updateMapLines(state.userLines);
   });
 
   $('submit-btn').addEventListener('click', handleSubmit);

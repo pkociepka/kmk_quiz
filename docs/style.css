@@ -42,39 +42,147 @@ h1 {
 
 .diff-group { display: flex; gap: .25rem; }
 
-.lang-btn {
-  background: transparent;
-  border: 2px solid rgba(255,255,255,.45);
-  color: #fff;
-  padding: .2rem .6rem;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: .75rem;
-  font-weight: 700;
-  margin-left: .25rem;
-  transition: background .15s, border-color .15s;
-}
-.lang-btn:hover {
-  background: rgba(255,255,255,.2);
-  border-color: rgba(255,255,255,.7);
+/* ── Settings button ─────────────────────────────────────────────────────── */
+.settings-wrapper {
+  position: relative;
+  flex-shrink: 0;
 }
 
-.diff-btn {
+.settings-btn {
   background: transparent;
-  border: 2px solid rgba(255,255,255,.45);
+  border: none;
   color: #fff;
-  padding: .2rem .7rem;
-  border-radius: 999px;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
   cursor: pointer;
-  font-size: .75rem;
-  font-weight: 600;
-  transition: background .15s, border-color .15s;
+  font-size: 1.4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .15s;
 }
-.diff-btn:hover,
-.diff-btn.active {
+.settings-btn:hover,
+.settings-btn.open { opacity: .7; }
+
+/* ── Settings panel ──────────────────────────────────────────────────────── */
+.settings-panel {
+  position: absolute;
+  top: calc(100% + .5rem);
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: .625rem;
+  padding: 1rem;
+  min-width: 220px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.13);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  gap: .875rem;
+}
+
+.settings-group {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.settings-group--row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.settings-label {
+  font-size: .65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted);
+}
+
+/* ── Toggle switch ───────────────────────────────────────────────────────── */
+.toggle {
+  position: relative;
+  width: 2.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--border);
+  border-radius: 999px;
+  transition: background .2s;
+}
+
+.toggle-slider::before {
+  content: '';
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  left: .125rem;
+  top: .125rem;
   background: #fff;
-  color: var(--red);
-  border-color: #fff;
+  border-radius: 50%;
+  transition: transform .2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+}
+
+.toggle input:checked + .toggle-slider { background: var(--red); }
+.toggle input:checked + .toggle-slider::before { transform: translateX(1rem); }
+
+/* Diff buttons — now only inside the settings panel */
+.diff-btn {
+  flex: 1;
+  padding: .3rem .5rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: .375rem;
+  cursor: pointer;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: background .12s, border-color .12s, color .12s;
+}
+.diff-btn:hover { background: var(--border); }
+.diff-btn.active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
+}
+
+/* Language toggle inside settings panel */
+.lang-group { display: flex; gap: .25rem; }
+
+.lang-option-btn {
+  flex: 1;
+  padding: .3rem .5rem;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: .375rem;
+  cursor: pointer;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text);
+  transition: background .12s, border-color .12s, color .12s;
+}
+.lang-option-btn:hover:not(.active) { background: var(--border); }
+.lang-option-btn.active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--red);
 }
 
 /* ── Layout ─────────────────────────────────────────────────────────────── */

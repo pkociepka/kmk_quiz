@@ -11,12 +11,33 @@
 
   <header>
     <h1 id="app-title">Krakowski Szybki Tramwaj</h1>
-    <div class="diff-group">
-      <button class="diff-btn" data-diff="easy">Łatwy</button>
-      <button class="diff-btn" data-diff="normal">Średni</button>
-      <button class="diff-btn" data-diff="hard">Trudny</button>
+    <div class="settings-wrapper">
+      <button id="settings-btn" class="settings-btn" aria-label="Ustawienia">⚙</button>
+      <div id="settings-panel" class="settings-panel hidden">
+        <div class="settings-group">
+          <div class="settings-label" id="label-diff-setting">Poziom trudności</div>
+          <div class="diff-group">
+            <button class="diff-btn" data-diff="easy">Łatwy</button>
+            <button class="diff-btn" data-diff="normal">Średni</button>
+            <button class="diff-btn" data-diff="hard">Trudny</button>
+          </div>
+        </div>
+        <div class="settings-group">
+          <div class="settings-label" id="label-lang-setting">Język</div>
+          <div class="lang-group">
+            <button class="lang-option-btn active" data-lang="pl">🇵🇱 PL</button>
+            <button class="lang-option-btn" data-lang="en">🇬🇧 EN</button>
+          </div>
+        </div>
+        <label class="settings-group settings-group--row" for="show-paths-toggle">
+          <span class="settings-label" id="label-paths-setting">Podgląd linii na mapie</span>
+          <span class="toggle">
+            <input type="checkbox" id="show-paths-toggle" checked>
+            <span class="toggle-slider"></span>
+          </span>
+        </label>
+      </div>
     </div>
-    <button id="lang-btn" class="lang-btn">🇬🇧 EN</button>
   </header>
 
   <div class="layout">
