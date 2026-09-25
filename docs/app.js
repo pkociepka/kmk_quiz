@@ -230,6 +230,37 @@ function userRouteMinStops(lines, src, dst) {
   return reachable.get(dst) ?? Infinity;
 }
 
+// Same DP as userRouteMinStops but records predecessors so we can reconstruct
+// board/alight stops for each segment — used to draw badges on a correct answer.
+function findUserSegments(lines, src, dst) {
+  let reachable = new Map([[src, { cost: 0, from: null }]]);
+  const history = [reachable];
+  for (const line of lines) {
+    const next = new Map();
+    for (const [stop, { cost }] of reachable) {
+      if (!state.routeStops[line]?.has(stop)) continue;
+      for (const nb of state.routeStops[line]) {
+        const d = stopsOnRoute(line, stop, nb);
+        if (d === Infinity) continue;
+        const total = cost + d;
+        if (!next.has(nb) || next.get(nb).cost > total)
+          next.set(nb, { cost: total, from: stop });
+      }
+    }
+    history.push(next);
+    reachable = next;
+  }
+  if (!reachable.has(dst)) return null;
+  const segments = [];
+  let cur = dst;
+  for (let i = lines.length - 1; i >= 0; i--) {
+    const { from: boardAt } = history[i + 1].get(cur);
+    segments.unshift({ line: lines[i], boardAt, alightAt: cur });
+    cur = boardAt;
+  }
+  return segments;
+}
+
 // Find the optimal path as detailed segments: [{line, boardAt, alightAt}, …]
 // Uses layer BFS — each while-iteration = one additional line boarded.
 // boardAt / alightAt are the logical stop slugs where the rider gets on / off.
@@ -318,7 +349,7 @@ const LINE_COLORS = ['#2563eb', '#d97706', '#16a34a', '#9333ea', '#0891b2'];
 const SOLUTION_COLORS = ['#dc2626', '#0d9488', '#7c3aed', '#be185d', '#ca8a04'];
 
 function initMap() {
-  map = L.map('map', { zoomControl: true });
+  map = L.map('map', { zoomControl: true, minZoom: 11 });
   // Esri World Light Gray Canvas — clean minimalistic style, no API key required.
   L.tileLayer(
     'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
@@ -357,15 +388,21 @@ function updateMapLines(lines) {
 }
 
 // After submit: draw each segment's full line faint + the used portion thick + a number badge.
-function drawOptimalSegments(segments) {
-  // Fade user's lines instead of removing — player can still see what they picked
-  routeLayers.forEach(l => { if (l.setStyle) l.setStyle({ opacity: 0.28, weight: 3 }); });
+// colors: palette for this draw pass (SOLUTION_COLORS for wrong, LINE_COLORS for correct).
+// clear:  true = remove existing layers first; false = fade them (wrong-answer overlay).
+function drawOptimalSegments(segments, colors = SOLUTION_COLORS, clear = false) {
+  if (clear) {
+    routeLayers.forEach(l => l.remove());
+    routeLayers = [];
+  } else {
+    routeLayers.forEach(l => { if (l.setStyle) l.setStyle({ opacity: 0.28, weight: 3 }); });
+  }
 
   const T = LANG[state.lang];
   segments.forEach((seg, i) => {
     const data = state.network[seg.line];
     if (!data) return;
-    const color = SOLUTION_COLORS[i % SOLUTION_COLORS.length];
+    const color = colors[i % colors.length];
 
     // Full line extent — same color but very faint so lines stay distinct
     const fullDir = data.directions.reduce((a, b) => a.length >= b.length ? a : b);
@@ -501,7 +538,7 @@ function showChallenge(ch) {
   $('from-name').textContent = state.stops[ch.from]?.name ?? ch.from;
   $('to-name').textContent   = state.stops[ch.to]?.name   ?? ch.to;
 
-  $('quiz').classList.remove('hidden');
+  $('quiz').classList.remove('hidden', 'quiz--submitted');
   $('result-panel').classList.add('hidden');
   $('all-done').classList.add('hidden');
 
@@ -509,6 +546,8 @@ function showChallenge(ch) {
   renderLineGrid();
   renderSubmitBtn();
 
+  $('map').style.height = '';
+  map.invalidateSize();
   setMapPins(ch.from, ch.to);
   updateMapLines([]);
   fitBounds();
@@ -584,10 +623,24 @@ function handleSubmit() {
 
   const isCorrect = validation.ok && userLines.length === optimal;
   if (isCorrect) {
-    // Always show the user's route after a correct answer, regardless of showPaths setting.
-    updateMapLines(userLines);
+    const userSegs = findUserSegments(userLines, from, to);
+    if (userSegs) drawOptimalSegments(userSegs, LINE_COLORS, true);
+    else updateMapLines(userLines);
   } else if (optSegs) {
     drawOptimalSegments(optSegs);
+  }
+
+  $('quiz').classList.add('quiz--submitted');
+  if (window.innerWidth <= 600) {
+    requestAnimationFrame(() => {
+      const headerH = document.querySelector('header').offsetHeight;
+      const panelH  = document.querySelector('.panel').offsetHeight;
+      const remaining = window.innerHeight - headerH - panelH;
+      $('map').style.height = Math.max(remaining, 200) + 'px';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      map.invalidateSize();
+      fitBounds();
+    });
   }
 }
 

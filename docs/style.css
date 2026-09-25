@@ -459,10 +459,40 @@ h1 {
   }
 
   #map {
-    height: 55vw;
-    min-height: 240px;
+    height: 60vw;
+    min-height: 280px;
     flex: none;
   }
 
   h1 { font-size: .875rem; }
+
+  /* Tap targets ≥ 44px */
+  .settings-btn {
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.6rem;
+  }
+
+  .line-btn {
+    min-height: 44px;
+    font-size: .9rem;
+  }
+
+  .btn-primary  { padding: .8rem 1rem; }
+  .btn-secondary { padding: .7rem 1rem; }
+
+  .route-chip { padding: .45rem .65rem; }
+
+  .diff-btn,
+  .lang-option-btn { padding: .55rem .5rem; }
+
+  /* Full-row toggle is the tap target */
+  .settings-group--row { min-height: 44px; }
+
+  /* After submitting: hide the lines picker and route builder to expose the map */
+  .quiz--submitted #label-route,
+  .quiz--submitted #route-display,
+  .quiz--submitted #label-lines,
+  .quiz--submitted #line-grid,
+  .quiz--submitted #submit-btn { display: none !important; }
 }
