@@ -441,6 +441,57 @@ h1 {
 .muted { color: var(--muted); font-size: .875rem; }
 .hidden { display: none !important; }
 
+/* ── Welcome overlay ─────────────────────────────────────────────────────── */
+.welcome-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 999;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 2.5rem 1rem 3rem;
+}
+
+.welcome-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: .75rem;
+  padding: 2rem 1.75rem;
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.welcome-card h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--red);
+}
+
+.welcome-desc {
+  font-size: .95rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.welcome-hint {
+  font-size: .8rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.welcome-overlay:not(.hidden) ~ .layout #map { visibility: hidden; }
+
 /* ── Mobile ──────────────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
   html, body { overflow: auto; }

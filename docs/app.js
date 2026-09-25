@@ -18,6 +18,8 @@ const state = {
   submitted:  false,
 };
 
+const WELCOME_VERSION = 1;
+
 // ── Plurals ───────────────────────────────────────────────────────────────────
 
 function _plLine(n) {
@@ -70,6 +72,10 @@ const LANG = {
     mapTo:       'Dokąd',
     mapLine:     (name) => `Linia ${name}`,
     mapSeg:      (line, from, to) => `Linia ${line}: ${from} → ${to}`,
+    welcomeDesc: 'Quiz ze znajomości krakowskiej sieci tramwajowej. Wybierz linie, które pozwolą Ci dotrzeć ze wskazanego przystanku początkowego do docelowego, używając jak najmniejszej liczby przesiadek.',
+    welcomeDiffHint: 'Łatwy: jedna linia, bez przesiadek. Średni: dwie linie, jedna przesiadka. Trudny: trzy lub więcej linii.',
+    welcomePathsHint: 'Gdy ta opcja jest włączona, trasy linii są widoczne na mapie podczas układania odpowiedzi. Wyłącz, żeby nieco utrudnić sobie zadanie.',
+    welcomeStart: 'Zaczynamy →',
   },
   en: {
     appTitle:    'Krakowski Szybki Tramwaj',
@@ -101,6 +107,10 @@ const LANG = {
     mapTo:       'To',
     mapLine:     (name) => `Line ${name}`,
     mapSeg:      (line, from, to) => `Line ${line}: ${from} → ${to}`,
+    welcomeDesc: 'A quiz on the Kraków tram network. Pick the lines that will take you from the given starting stop to the destination, using as few transfers as possible.',
+    welcomeDiffHint: 'Easy: single line, no transfers. Normal: two lines, one transfer. Hard: three or more lines.',
+    welcomePathsHint: 'When on, tram line paths are visible on the map while building your answer. Turn off for a harder challenge.',
+    welcomeStart: 'Let\'s go →',
   },
 };
 
@@ -667,7 +677,16 @@ function applyTranslations() {
   $('label-diff-setting').textContent  = L.settingsDiff;
   $('label-lang-setting').textContent  = L.settingsLang;
   $('label-paths-setting').textContent = L.settingsPaths;
-  $('show-paths-toggle').checked = state.showPaths;
+  $('show-paths-toggle').checked       = state.showPaths;
+  $('welcome-title').textContent       = L.appTitle;
+  $('welcome-desc').textContent        = L.welcomeDesc;
+  $('wlabel-diff').textContent         = L.settingsDiff;
+  $('whint-diff').textContent          = L.welcomeDiffHint;
+  $('wlabel-lang').textContent         = L.settingsLang;
+  $('wlabel-paths').textContent        = L.settingsPaths;
+  $('whint-paths').textContent         = L.welcomePathsHint;
+  $('welcome-start-btn').textContent   = L.welcomeStart;
+  $('welcome-paths-toggle').checked    = state.showPaths;
   document.querySelectorAll('.lang-option-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.lang === state.lang);
   });
@@ -694,8 +713,8 @@ function wireEvents() {
   settingsPanel.addEventListener('click', e => e.stopPropagation());
   document.addEventListener('click', closeSettings);
 
-  // Difficulty selector (inside settings panel)
-  document.querySelectorAll('.diff-btn').forEach(btn =>
+  // Difficulty selector — settings panel only (welcome screen has its own handler)
+  settingsPanel.querySelectorAll('.diff-btn').forEach(btn =>
     btn.addEventListener('click', () => {
       state.difficulty = btn.dataset.diff;
       localStorage.setItem('kmq_diff', state.difficulty);
@@ -704,6 +723,27 @@ function wireEvents() {
       pickChallenge();
     })
   );
+
+  // Welcome screen handlers
+  $('welcome-diff-group').addEventListener('click', e => {
+    const btn = e.target.closest('.diff-btn');
+    if (!btn) return;
+    state.difficulty = btn.dataset.diff;
+    localStorage.setItem('kmq_diff', state.difficulty);
+    renderDiffButtons();
+  });
+
+  $('welcome-paths-toggle').addEventListener('change', e => {
+    state.showPaths = e.target.checked;
+    localStorage.setItem('kmq_show_paths', state.showPaths);
+    $('show-paths-toggle').checked = state.showPaths;
+  });
+
+  $('welcome-start-btn').addEventListener('click', () => {
+    localStorage.setItem('kmq_welcome', String(WELCOME_VERSION));
+    $('welcome-overlay').classList.add('hidden');
+    pickChallenge();
+  });
 
   // Language selector (inside settings panel)
   document.querySelectorAll('.lang-option-btn').forEach(btn =>
@@ -769,7 +809,11 @@ async function init() {
     wireEvents();
     applyTranslations();
     renderLineGrid();
-    pickChallenge();
+    if (localStorage.getItem('kmq_welcome') === String(WELCOME_VERSION)) {
+      $('welcome-overlay').classList.add('hidden');
+      pickChallenge();
+    }
+    // else: welcome overlay stays visible; pickChallenge called on dismiss
   } catch (err) {
     $('loading').textContent = LANG[state.lang].loadError(err.message);
     console.error(err);

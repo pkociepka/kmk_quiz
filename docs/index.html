@@ -40,6 +40,46 @@
     </div>
   </header>
 
+  <div id="welcome-overlay" class="welcome-overlay">
+    <div class="welcome-card">
+      <h2 id="welcome-title">Krakowski Szybki Tramwaj</h2>
+      <p id="welcome-desc" class="welcome-desc"></p>
+
+      <div class="welcome-section">
+        <div class="settings-label" id="wlabel-diff"></div>
+        <p id="whint-diff" class="welcome-hint"></p>
+        <div class="diff-group" id="welcome-diff-group">
+          <button class="diff-btn" data-diff="easy"></button>
+          <button class="diff-btn" data-diff="normal"></button>
+          <button class="diff-btn" data-diff="hard"></button>
+        </div>
+      </div>
+
+      <div class="welcome-section">
+        <div class="settings-label" id="wlabel-lang"></div>
+        <div class="lang-group">
+          <button class="lang-option-btn" data-lang="pl">🇵🇱 PL</button>
+          <button class="lang-option-btn" data-lang="en">🇬🇧 EN</button>
+        </div>
+      </div>
+
+      <div class="welcome-section">
+        <label class="settings-group settings-group--row" for="welcome-paths-toggle">
+          <div>
+            <div class="settings-label" id="wlabel-paths"></div>
+            <p id="whint-paths" class="welcome-hint"></p>
+          </div>
+          <span class="toggle">
+            <input type="checkbox" id="welcome-paths-toggle" checked>
+            <span class="toggle-slider"></span>
+          </span>
+        </label>
+      </div>
+
+      <button id="welcome-start-btn" class="btn-primary"></button>
+    </div>
+  </div>
+
   <div class="layout">
 
     <aside class="panel">
