@@ -22,7 +22,7 @@ from collections import Counter, defaultdict
 import random
 
 GTFS_DIR = "gtfs"
-OUT_DIR  = "docs/data"
+OUT_DIR  = "docs/data"   # fallback for single-file CLI mode
 N_CHALLENGES = 30       # per difficulty level
 MIN_EASY_STOPS = 5      # min stops apart for easy (same-line) challenges
 RANDOM_SEED = 42
@@ -31,6 +31,12 @@ RANDOM_SEED = 42
 # Filters out night-only tram lines (62, 64, 69 in Kraków) automatically.
 DAYTIME_START = "06:00:00"
 DAYTIME_END   = "20:00:00"
+
+# Two timetable variants built in one run (no-arg mode).
+TIMETABLES = {
+    "old": {"zip": "gtfs/GTFS_KRK_T_old.zip", "out": "docs/data/old"},
+    "new": {"zip": "gtfs/GTFS_KRK_T_new.zip", "out": "docs/data/new"},
+}
 
 # Polish character transliteration for URL-safe slugs
 _PL = str.maketrans("ąćęłńóśźżĄĆĘŁŃÓŚŹŻ", "acelnoszzACELNOSZZ")
@@ -240,26 +246,8 @@ def generate_challenges(network, route_stops, stop_routes, logical):
     return challenges
 
 
-def resolve_gtfs():
-    if len(sys.argv) > 1:
-        path = sys.argv[1]
-        if not os.path.exists(path):
-            sys.exit(f"File not found: {path}")
-        return path
-    zips = sorted(glob.glob(f"{GTFS_DIR}/*.zip"), key=os.path.getmtime, reverse=True)
-    if not zips:
-        sys.exit(f"No *.zip files found in {GTFS_DIR}/. "
-                 "Drop a GTFS archive there or pass a path explicitly.")
-    if len(zips) > 1:
-        print(f"Multiple zips in {GTFS_DIR}/, using newest: {zips[0]}")
-    return zips[0]
-
-
-def main():
-    random.seed(RANDOM_SEED)
-    os.makedirs(OUT_DIR, exist_ok=True)
-
-    gtfs_zip = resolve_gtfs()
+def build_one(gtfs_zip, out_dir):
+    """Build stops/network/challenges JSON for one GTFS archive into out_dir."""
     print(f"Reading GTFS from {gtfs_zip}…")
     with zipfile.ZipFile(gtfs_zip) as zf:
         routes_raw = read_csv(zf, "routes.txt")
@@ -288,17 +276,35 @@ def main():
     counts = Counter(c["difficulty"] for c in challenges)
     print(f"  easy={counts['easy']}  normal={counts['normal']}  hard={counts['hard']}")
 
+    os.makedirs(out_dir, exist_ok=True)
     print("Writing output…")
-    with open(f"{OUT_DIR}/stops.json", "w", encoding="utf-8") as f:
+    with open(f"{out_dir}/stops.json", "w", encoding="utf-8") as f:
         json.dump(logical, f, ensure_ascii=False, indent=2)
-
-    with open(f"{OUT_DIR}/network.json", "w", encoding="utf-8") as f:
+    with open(f"{out_dir}/network.json", "w", encoding="utf-8") as f:
         json.dump(network, f, ensure_ascii=False, indent=2)
-
-    with open(f"{OUT_DIR}/challenges.json", "w", encoding="utf-8") as f:
+    with open(f"{out_dir}/challenges.json", "w", encoding="utf-8") as f:
         json.dump(challenges, f, ensure_ascii=False, indent=2)
+    print(f"Done → {out_dir}/")
 
-    print(f"Done → {OUT_DIR}/")
+
+def main():
+    random.seed(RANDOM_SEED)
+
+    if len(sys.argv) > 1:
+        # Single-file mode: python build.py path/to/file.zip [output_dir]
+        gtfs_zip = sys.argv[1]
+        if not os.path.exists(gtfs_zip):
+            sys.exit(f"File not found: {gtfs_zip}")
+        out_dir = sys.argv[2] if len(sys.argv) > 2 else OUT_DIR
+        build_one(gtfs_zip, out_dir)
+    else:
+        # Multi-timetable mode: build all entries in TIMETABLES
+        for name, cfg in TIMETABLES.items():
+            if not os.path.exists(cfg["zip"]):
+                print(f"Skipping '{name}': {cfg['zip']} not found.")
+                continue
+            print(f"\n=== Timetable: {name} ===")
+            build_one(cfg["zip"], cfg["out"])
 
 
 if __name__ == "__main__":

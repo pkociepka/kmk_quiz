@@ -15,6 +15,13 @@
       <button id="settings-btn" class="settings-btn" aria-label="Ustawienia">⚙</button>
       <div id="settings-panel" class="settings-panel hidden">
         <div class="settings-group">
+          <div class="settings-label" id="label-timetable-setting">Rozkład jazdy</div>
+          <div class="diff-group">
+            <button class="timetable-btn" data-timetable="old"></button>
+            <button class="timetable-btn" data-timetable="new"></button>
+          </div>
+        </div>
+        <div class="settings-group">
           <div class="settings-label" id="label-diff-setting">Poziom trudności</div>
           <div class="diff-group">
             <button class="diff-btn" data-diff="easy">Łatwy</button>
@@ -44,6 +51,15 @@
     <div class="welcome-card">
       <h2 id="welcome-title">Krakowski Szybki Tramwaj</h2>
       <p id="welcome-desc" class="welcome-desc"></p>
+
+      <div class="welcome-section">
+        <div class="settings-label" id="wlabel-timetable"></div>
+        <p id="whint-timetable" class="welcome-hint"></p>
+        <div class="diff-group" id="welcome-timetable-group">
+          <button class="timetable-btn" data-timetable="old"></button>
+          <button class="timetable-btn" data-timetable="new"></button>
+        </div>
+      </div>
 
       <div class="welcome-section">
         <div class="settings-label" id="wlabel-diff"></div>

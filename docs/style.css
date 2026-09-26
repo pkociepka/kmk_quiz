@@ -144,7 +144,8 @@ h1 {
 .toggle input:checked + .toggle-slider::before { transform: translateX(1rem); }
 
 /* Diff buttons — now only inside the settings panel */
-.diff-btn {
+.diff-btn,
+.timetable-btn {
   flex: 1;
   padding: .3rem .5rem;
   background: var(--bg);
@@ -156,8 +157,10 @@ h1 {
   color: var(--text);
   transition: background .12s, border-color .12s, color .12s;
 }
-.diff-btn:hover { background: var(--border); }
-.diff-btn.active {
+.diff-btn:hover,
+.timetable-btn:hover { background: var(--border); }
+.diff-btn.active,
+.timetable-btn.active {
   background: var(--red);
   color: #fff;
   border-color: var(--red);
@@ -535,6 +538,7 @@ h1 {
   .route-chip { padding: .45rem .65rem; }
 
   .diff-btn,
+  .timetable-btn,
   .lang-option-btn { padding: .55rem .5rem; }
 
   /* Full-row toggle is the tap target */

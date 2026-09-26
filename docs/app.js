@@ -11,14 +11,17 @@ const state = {
   difficulty: localStorage.getItem('kmq_diff') ?? 'easy',
   lang:       localStorage.getItem('kmq_lang') ?? 'pl',
   showPaths:  localStorage.getItem('kmq_show_paths') !== 'false',
-  solved:     new Set(JSON.parse(localStorage.getItem('kmq_solved') ?? '[]')),
+  timetable:  localStorage.getItem('kmq_timetable') ?? 'new',
+  solved:     new Set(JSON.parse(
+    localStorage.getItem(`kmq_solved_${localStorage.getItem('kmq_timetable') ?? 'new'}`) ?? '[]'
+  )),
 
   challenge:  null,
   userLines:  [],
   submitted:  false,
 };
 
-const WELCOME_VERSION = 1;
+const WELCOME_VERSION = 2;
 
 // ── Plurals ───────────────────────────────────────────────────────────────────
 
@@ -72,6 +75,9 @@ const LANG = {
     mapTo:       'Dokąd',
     mapLine:     (name) => `Linia ${name}`,
     mapSeg:      (line, from, to) => `Linia ${line}: ${from} → ${to}`,
+    settingsTimetable: 'Rozkład jazdy',
+    timetableLabel: { old: 'Stary', new: 'Nowy' },
+    welcomeTimetableHint: 'Stary: jeśli tęsknisz za liniami 50 i 52. Nowy: jeśli chcesz się zmierzyć z rozkładem po ostatnich zmianach.',
     welcomeDesc: 'Quiz ze znajomości krakowskiej sieci tramwajowej. Wybierz linie, które pozwolą Ci dotrzeć ze wskazanego przystanku początkowego do docelowego, używając jak najmniejszej liczby przesiadek.',
     welcomeDiffHint: 'Łatwy: jedna linia, bez przesiadek. Średni: dwie linie, jedna przesiadka. Trudny: trzy lub więcej linii.',
     welcomePathsHint: 'Gdy ta opcja jest włączona, trasy linii są widoczne na mapie podczas układania odpowiedzi. Wyłącz, żeby nieco utrudnić sobie zadanie.',
@@ -107,6 +113,9 @@ const LANG = {
     mapTo:       'To',
     mapLine:     (name) => `Line ${name}`,
     mapSeg:      (line, from, to) => `Line ${line}: ${from} → ${to}`,
+    settingsTimetable: 'Timetable',
+    timetableLabel: { old: 'Old', new: 'New' },
+    welcomeTimetableHint: 'Old: if you miss lines 50 and 52. New: if you want to tackle the network after the latest changes.',
     welcomeDesc: 'A quiz on the Kraków tram network. Pick the lines that will take you from the given starting stop to the destination, using as few transfers as possible.',
     welcomeDiffHint: 'Easy: single line, no transfers. Normal: two lines, one transfer. Hard: three or more lines.',
     welcomePathsHint: 'When on, tram line paths are visible on the map while building your answer. Turn off for a harder challenge.',
@@ -117,16 +126,17 @@ const LANG = {
 // ── Persistence ───────────────────────────────────────────────────────────────
 
 function saveSolved() {
-  localStorage.setItem('kmq_solved', JSON.stringify([...state.solved]));
+  localStorage.setItem(`kmq_solved_${state.timetable}`, JSON.stringify([...state.solved]));
 }
 
 // ── Data loading ──────────────────────────────────────────────────────────────
 
 async function loadData() {
+  const base = `data/${state.timetable}`;
   const [stops, network, challenges] = await Promise.all([
-    fetch('data/stops.json').then(r => r.json()),
-    fetch('data/network.json').then(r => r.json()),
-    fetch('data/challenges.json').then(r => r.json()),
+    fetch(`${base}/stops.json`).then(r => r.json()),
+    fetch(`${base}/network.json`).then(r => r.json()),
+    fetch(`${base}/challenges.json`).then(r => r.json()),
   ]);
 
   state.stops      = stops;
@@ -500,6 +510,33 @@ function renderDiffButtons() {
   });
 }
 
+function renderTimetableButtons() {
+  const L = LANG[state.lang];
+  document.querySelectorAll('.timetable-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.timetable === state.timetable);
+    btn.textContent = L.timetableLabel[btn.dataset.timetable] ?? btn.dataset.timetable;
+  });
+}
+
+async function switchTimetable(t) {
+  if (state.timetable === t) return;
+  state.timetable = t;
+  localStorage.setItem('kmq_timetable', t);
+  state.solved = new Set(JSON.parse(localStorage.getItem(`kmq_solved_${t}`) ?? '[]'));
+  renderTimetableButtons();
+  $('quiz').classList.add('hidden');
+  $('all-done').classList.add('hidden');
+  $('loading').textContent = LANG[state.lang].loading;
+  $('loading').classList.remove('hidden');
+  try {
+    await loadData();
+    $('loading').classList.add('hidden');
+    pickChallenge();
+  } catch (err) {
+    $('loading').textContent = LANG[state.lang].loadError(err.message);
+  }
+}
+
 function renderRouteDisplay() {
   const div = $('route-display');
   if (!state.userLines.length) {
@@ -674,9 +711,12 @@ function applyTranslations() {
   $('next-btn').textContent        = L.nextBtn;
   $('reset-btn').textContent       = L.resetDiff;
   $('loading').textContent         = L.loading;
-  $('label-diff-setting').textContent  = L.settingsDiff;
-  $('label-lang-setting').textContent  = L.settingsLang;
-  $('label-paths-setting').textContent = L.settingsPaths;
+  $('label-diff-setting').textContent       = L.settingsDiff;
+  $('label-lang-setting').textContent       = L.settingsLang;
+  $('label-paths-setting').textContent      = L.settingsPaths;
+  $('label-timetable-setting').textContent  = L.settingsTimetable;
+  $('wlabel-timetable').textContent         = L.settingsTimetable;
+  $('whint-timetable').textContent          = L.welcomeTimetableHint;
   $('show-paths-toggle').checked       = state.showPaths;
   $('welcome-title').textContent       = L.appTitle;
   $('welcome-desc').textContent        = L.welcomeDesc;
@@ -691,6 +731,7 @@ function applyTranslations() {
     btn.classList.toggle('active', btn.dataset.lang === state.lang);
   });
   renderDiffButtons();
+  renderTimetableButtons();
   renderRouteDisplay();
   if (!$('all-done').classList.contains('hidden'))
     $('done-text').textContent = L.allDone(state.difficulty);
@@ -724,6 +765,14 @@ function wireEvents() {
     })
   );
 
+  // Timetable selector (settings panel only — triggers data reload)
+  settingsPanel.querySelectorAll('.timetable-btn').forEach(btn =>
+    btn.addEventListener('click', () => {
+      closeSettings();
+      switchTimetable(btn.dataset.timetable);
+    })
+  );
+
   // Welcome screen handlers
   $('welcome-diff-group').addEventListener('click', e => {
     const btn = e.target.closest('.diff-btn');
@@ -731,6 +780,17 @@ function wireEvents() {
     state.difficulty = btn.dataset.diff;
     localStorage.setItem('kmq_diff', state.difficulty);
     renderDiffButtons();
+  });
+
+  $('welcome-timetable-group').addEventListener('click', e => {
+    const btn = e.target.closest('.timetable-btn');
+    if (!btn) return;
+    state.timetable = btn.dataset.timetable;
+    localStorage.setItem('kmq_timetable', btn.dataset.timetable);
+    state.solved = new Set(JSON.parse(
+      localStorage.getItem(`kmq_solved_${btn.dataset.timetable}`) ?? '[]'
+    ));
+    renderTimetableButtons();
   });
 
   $('welcome-paths-toggle').addEventListener('change', e => {
